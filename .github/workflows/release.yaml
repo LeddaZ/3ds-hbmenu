@@ -27,8 +27,11 @@ jobs:
     - name: Bundle release archive
       run: zip "3ds-hbmenu-$VERSTRING.zip" -r config boot.3dsx
     - name: Publish release archive
-      uses: softprops/action-gh-release@v1
+      uses: marvinpinto/action-automatic-releases@latest
       with:
-        files: "./3ds-hbmenu-${{ env.VERSTRING }}.zip"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "dev"
+        prerelease: true
+        title: "Latest commit"
+        files: |
+          "./3ds-hbmenu-${{ env.VERSTRING }}.zip"
