@@ -31,7 +31,7 @@ jobs:
         VERSTRING=$(git describe --tags --match "v[0-9]*" --abbrev=7 | sed 's/-[0-9]*-g/-/')
         echo "VERSTRING=$VERSTRING" | tee -a $GITHUB_OUTPUT
     - name: Build
-      run: make -j$(nproc --all)
+      run: make
     - name: Publish boot.3dsx (only on manual run or release)
       uses: actions/upload-artifact@v4
       with:
